@@ -3,295 +3,683 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portfolio</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Rachit Gandhi | Algorithm Enthusiast</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
+            background-color: #f5f7fa;
             color: #333;
-            background-color: #f4f4f4;
+            line-height: 1.6;
         }
-
-        .container {
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
         }
-
-        header {
-            background-color: #2c3e50;
-            color: #fff;
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        #hero {
             text-align: center;
-            padding: 2rem 0;
+            padding-top: 8rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .profile-img {
+        
+        #hero img {
             width: 200px;
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid #fff;
-            animation: pulse 2s infinite;
+            border: 5px solid white;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-            }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-            }
+        
+        #hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
         }
-
-        nav {
-            background-color: #34495e;
-            padding: 1rem 0;
-        }
-
-        nav ul {
-            list-style-type: none;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul li {
-            margin: 0 1rem;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #3498db;
-        }
-
-        section {
-            padding: 2rem 0;
-        }
-
-        h2 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .project {
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .project img {
-            max-width: 100%;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skill {
-            background-color: #3498db;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: #fff;
+        
+        #hero p {
             font-size: 1.5rem;
-            transition: color 0.3s ease;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
-
-        .social-links a:hover {
-            color: #3498db;
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
         }
-
-        table {
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .education-grid, .projects-grid, .skills-grid, .certifications-grid, .activities-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .education-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        
+        .education-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .education-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-card p {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+        
+        .projects-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-info p {
+            color: var(--gray);
+        }
+        
+        .skills-grid {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+        
+        .skill-item {
+            background: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .certifications-grid, .activities-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        
+        .certification-card, .activity-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .certification-card:hover, .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .certification-card h3, .activity-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .certification-card p, .activity-card p {
+            color: var(--gray);
+        }
+        
+        #contact {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        #contact h2 {
+            color: white;
+        }
+        
+        #contact h2::after {
+            background-color: white;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-links a:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--dark);
+            color: white;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Algorithm Visualization Section */
+        .algorithm-visualization {
+            margin: 3rem 0;
+        }
+        
+        .algorithm-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .complexity-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 1rem;
+            margin: 1rem 0;
         }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 0.5rem;
+        
+        .complexity-table th, .complexity-table td {
+            padding: 0.8rem;
             text-align: left;
+            border-bottom: 1px solid #eee;
         }
-
-        th {
-            background-color: #34495e;
-            color: #fff;
+        
+        .complexity-table th {
+            background-color: var(--light);
+            color: var(--primary);
         }
-
-        .chart-container {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
+        
+        .complexity-table tr:hover {
+            background-color: #f9f9f9;
         }
-
-        footer {
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
+        
+        .best-case {
+            color: #27ae60;
+        }
+        
+        .average-case {
+            color: #f39c12;
+        }
+        
+        .worst-case {
+            color: #e74c3c;
+        }
+        
+        .pseudocode {
+            background: #f8f9fa;
+            border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            #hero p {
+                font-size: 1.2rem;
+            }
+            
+            section {
+                padding: 3rem 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="img.png" alt="Student Name" class="profile-img">
-        <h1>Vaibhav Naiyar</h1>
-        <p>Computer Science Student</p>
-        <div class="social-links">
-            <a href="https://github.com/VaibhavNaiyar" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="linkedin.com/in/vaibhav-naiyar-07b817291" target="_blank"><i class="fab fa-linkedin"></i></a>
-        </div>
+        <nav>
+            <div class="logo">Vaibhav Naiyar</div>
+            <div class="nav-links">
+                <a href="#about"><i class="fas fa-user"></i> About</a>
+                <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+                <a href="#daa"><i class="fas fa-project-diagram"></i> DAA</a>
+                <a href="#projects"><i class="fas fa-code"></i> Projects</a>
+                <a href="#skills"><i class="fas fa-laptop-code"></i> Skills</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+        </nav>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#achievements">Achievements</a></li>
-        </ul>
-    </nav>
+    <section id="hero">
+        <img src="img.png" alt="Vaibhav Naiyar">
+        <h1>Vaibhav Naiyar</h1>
+        <p>CS Student | Algorithm Enthusiast | Problem Solver</p>
+        <div style="margin-top: 2rem;">
+            <a href="#daa" style="background: white; color: var(--primary); padding: 0.8rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s;">Explore My DAA Knowledge</a>
+        </div>
+    </section>
 
-    <div class="container">
-        <section id="about">
-            <h2>About Me</h2>
-            <p>I am a passionate computer science student with a strong interest in web development and problem-solving. I enjoy working on challenging projects and continuously learning new technologies.</p>
-        </section>
+    <section id="about" class="fade-in">
+        <h2>About Me</h2>
+        <p>I am a Computer Science student at SRMIST Chennai with a strong passion for algorithm design and analysis. My journey in computer science has been particularly focused on understanding the theoretical foundations and practical applications of algorithms to solve complex problems efficiently.</p>
+        
+        <p>Through my coursework in Design and Analysis of Algorithms (DAA), I've developed a deep appreciation for algorithmic thinking and optimization. I enjoy analyzing time and space complexity, comparing different algorithmic approaches, and implementing efficient solutions to computational problems.</p>
+        
+        <p>My academic projects and competitive programming experience have strengthened my ability to select appropriate algorithms based on problem constraints and to analyze their performance characteristics. I'm particularly interested in graph algorithms, dynamic programming, and divide-and-conquer strategies.</p>
+    </section>
 
-        <section id="education">
-            <h2>Education</h2>
-            <h3>Bachelor of Science in Computer Science</h3>
-            <p>SRM University, Expected Graduation: June 2027</p>
-            <div class="chart-container">
-                <ca22aZnvas id="gpaChart"></canvas>
+    <section id="education" class="fade-in">
+        <h2>Education</h2>
+        <div class="education-grid">
+            <div class="education-card">
+                <h3>Bachelor of Technology in Computer Science</h3>
+                <p>SRM Institute of Science and Technology</p>
+                <p>2023 - 2027</p>
+                <p>CGPA: 8.9 </p>
+                <p><strong>Relevant Courses:</strong> Design and Analysis of Algorithms, Data Structures, Discrete Mathematics, Theory of Computation</p>
             </div>
-        </section>
+            <div class="education-card">
+                <h3>Higher Secondary Education</h3>
+                <p>Sacred Heart Sn Sec School , Ludhiana</p>
+                <p>2021 - 2023</p>
+                <p>Percentage: 82%</p>
+                <p><strong>Mathematics Focus:</strong> Developed strong analytical and problem-solving skills through advanced mathematics coursework</p>
+            </div>
+        </div>
+    </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project">
+    <section id="daa" class="fade-in">
+        <h2>Design and Analysis of Algorithms</h2>
+        <p>My coursework in DAA has equipped me with a strong foundation in algorithm design paradigms and complexity analysis. Here are some key concepts I've mastered:</p>
+        
+        <div class="algorithm-visualization">
+            <div class="algorithm-card">
+                <h3><i class="fas fa-sort-amount-up"></i> Sorting Algorithms</h3>
+                <p>Implemented and analyzed various sorting algorithms with their time and space complexities:</p>
                 
-                <h3>Project 1: PPS - Simple Calculator </h3>
-                <p>Developed a web-based personal Calculator.</p>
+                <table class="complexity-table">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Best Case</th>
+                            <th>Average Case</th>
+                            <th>Worst Case</th>
+                            <th>Space</th>
+                            <th>Stable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Merge Sort</td>
+                            <td class="best-case">O(n log n)</td>
+                            <td class="average-case">O(n log n)</td>
+                            <td class="worst-case">O(n log n)</td>
+                            <td>O(n)</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Quick Sort</td>
+                            <td class="best-case">O(n log n)</td>
+                            <td class="average-case">O(n log n)</td>
+                            <td class="worst-case">O(n²)</td>
+                            <td>O(log n)</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Heap Sort</td>
+                            <td class="best-case">O(n log n)</td>
+                            <td class="average-case">O(n log n)</td>
+                            <td class="worst-case">O(n log n)</td>
+                            <td>O(1)</td>
+                            <td>No</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="project">
-               
-                <h3>Project 2: OODP - Library Management System</h3>
-                <p>Created a Java-based library management system implementing object-oriented design principles. The system includes features such as book cataloging, user management, and borrowing/returning functionalities.</p>
-            </div>
-            <div class="project">
             
-                <h3>Project 3: DS - My Portfolio</h3>
-                <p>Created my Portfolio</p>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills">
-                <span class="skill">Java</span>
-                <span class="skill">Python</span>
-                <span class="skill">C++</span>
-                <span class="skill">HTML/CSS</span>
-                <span class="skill">JavaScript</span>
-                <span class="skill">SQL</span>
-                <span class="skill">Git</span>
-                <span class="skill">Data Structures</span>
-                <span class="skill">Algorithms</span>
-            </div>
-        </section>
-
-        <section id="achievements">
-            <h2>Achievements</h2>
-            <ul>
-                <li>Participation in University Hackathon 2023</li>
-                <li>5-star coder on HackerRank (Problem Solving)</li>
-                <li>Udemy Python Certification</li>
-            </ul>
-        </section>
-
-        <section id="activities">
-            <h2>Co-Curricular &amp; Extra-Curricular Activities</h2>
-            <ul>
+            <div class="algorithm-card">
+                <h3><i class="fas fa-project-diagram"></i> Graph Algorithms</h3>
+                <p>Implemented and analyzed fundamental graph algorithms:</p>
                 
-                <li>Volunteer at AIESEC</li>
+                <table class="complexity-table">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Time Complexity</th>
+                            <th>Space Complexity</th>
+                            <th>Applications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dijkstra's</td>
+                            <td>O((V+E) log V)</td>
+                            <td>O(V)</td>
+                            <td>Shortest path (no negative edges)</td>
+                        </tr>
+                        <tr>
+                            <td>Bellman-Ford</td>
+                            <td>O(VE)</td>
+                            <td>O(V)</td>
+                            <td>Shortest path (with negative edges)</td>
+                        </tr>
+                        <tr>
+                            <td>Floyd-Warshall</td>
+                            <td>O(V³)</td>
+                            <td>O(V²)</td>
+                            <td>All pairs shortest paths</td>
+                        </tr>
+                        <tr>
+                            <td>Kruskal's</td>
+                            <td>O(E log V)</td>
+                            <td>O(E + V)</td>
+                            <td>Minimum Spanning Tree</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="algorithm-card">
+                <h3><i class="fas fa-chess"></i> Dynamic Programming</h3>
+                <p>Developed solutions using dynamic programming approaches:</p>
                 
-            </ul>
-        </section>
-    </div>
+                <div class="pseudocode">
+                    <pre>
+// Fibonacci using DP (Memoization)
+int fib(int n, vector<int>& memo) {
+    if (n <= 1) return n;
+    if (memo[n] != -1) return memo[n];
+    memo[n] = fib(n-1, memo) + fib(n-2, memo);
+    return memo[n];
+}
+
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+                    </pre>
+                </div>
+                
+                <p><strong>Key Problems Solved:</strong> Knapsack problem, Longest Common Subsequence, Matrix Chain Multiplication, Coin Change problem</p>
+            </div>
+            
+            <div class="algorithm-card">
+                <h3><i class="fas fa-code-branch"></i> Divide and Conquer</h3>
+                <p>Implemented algorithms using the divide and conquer strategy:</p>
+                
+                <div class="pseudocode">
+                    <pre>
+// Merge Sort Implementation
+void mergeSort(vector<int>& arr, int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m+1, r);
+        merge(arr, l, m, r);
+    }
+}
+
+// Time Complexity: O(n log n) in all cases
+// Space Complexity: O(n)
+                    </pre>
+                </div>
+                
+                <p><strong>Other Applications:</strong> Binary Search, Closest Pair of Points, Strassen's Matrix Multiplication</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade-in">
+        <h2>Algorithmic Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x200?text=Algorithm+Visualizer" alt="Algorithm Visualizer">
+                <div class="project-info">
+                    <h3>Algorithm Visualizer</h3>
+                    <p>An interactive web application that visualizes sorting and pathfinding algorithms with step-by-step execution and complexity analysis.</p>
+                    <p><strong>Technologies:</strong> JavaScript, React, D3.js</p>
+                    <p><strong>Algorithms:</strong> Dijkstra's, A*, Bubble Sort, Quick Sort</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x200?text=Graph+Algorithm+Analyzer" alt="Graph Algorithm Analyzer">
+                <div class="project-info">
+                    <h3>Graph Algorithm Performance Analyzer</h3>
+                    <p>A Java application that compares performance of various graph algorithms on different graph types and sizes.</p>
+                    <p><strong>Algorithms:</strong> BFS, DFS, Dijkstra's, Prim's, Kruskal's</p>
+                    <p><strong>Analysis:</strong> Time complexity verification, empirical performance measurement</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x200?text=Dynamic+Programming+Solver" alt="DP Solver">
+                <div class="project-info">
+                    <h3>Dynamic Programming Problem Solver</h3>
+                    <p>A C++ tool that solves classic DP problems with visualization of the memoization table and optimal substructure.</p>
+                    <p><strong>Problems:</strong> 0/1 Knapsack, LCS, Matrix Chain Multiplication</p>
+                    <p><strong>Features:</strong> Step-by-step solution tracing, complexity analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="fade-in">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">C++</div>
+            <div class="skill-item">Java</div>
+            <div class="skill-item">Python</div>
+            <div class="skill-item">Data Structures</div>
+            <div class="skill-item">Algorithms</div>
+            <div class="skill-item">Complexity Analysis</div>
+            <div class="skill-item">Problem Solving</div>
+            <div class="skill-item">Git</div>
+            <div class="skill-item">Algorithm Design</div>
+            <div class="skill-item">Discrete Math</div>
+        </div>
+        
+        <h3 style="margin-top: 2rem;">Algorithmic Paradigms</h3>
+        <div class="skills-grid">
+            <div class="skill-item">Divide & Conquer</div>
+            <div class="skill-item">Dynamic Programming</div>
+            <div class="skill-item">Greedy Algorithms</div>
+            <div class="skill-item">Backtracking</div>
+            <div class="skill-item">Graph Algorithms</div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade-in">
+        <h2>Contact Me</h2>
+        <p>I'm always interested in discussing algorithms, complexity theory, or potential collaborations.</p>
+        <div class="contact-links">
+            <a href="https://github.com/VaibhavNaiyar"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/vaibhav-naiyar-07b817291/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://leetcode.com/u/vaibhavnaiyar/"><i class="fas fa-code"></i> LeetCode</a>
+            <a href="mailto:vaibhavnaiyar04@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2023 Vaibhav Naiyar. All rights reserved.</p>
+        <p>&copy; 2025 Vaibhav Naiyar. All rights reserved.</p>
     </footer>
 
     <script>
-        const ctx = document.getElementById('gpaChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Semester 1', 'Semester 2', 'Semester 3', 'Semester 4', 'Semester 5', 'Semester 6'],
-                datasets: [{
-                    label: 'GPA',
-                    data: [3.7, 3.8, 3.9, 3.8, 4.0, 3.9],
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: false,
-                        min: 3.0,
-                        max: 4.0
-                    }
+        // Intersection Observer for fade-in animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
-            }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
